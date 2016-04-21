@@ -820,7 +820,7 @@ if not environ.get('KIVY_DOC_INCLUDE'):
                 'data/fonts/Roboto-BoldItalic.ttf'])
 
         elif version == 17:
-            Config.setdefault('graphics', 'vsync', 0)
+            Config.setdefault('graphics', 'vsync', 'None')
 
         # elif version == 1:
         #    # add here the command for upgrading from configuration 0 to 1
