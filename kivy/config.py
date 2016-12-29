@@ -92,6 +92,13 @@ Available configuration tokens
     `window_icon`: string
         Path of the window icon. Use this if you want to replace the default
         pygame icon.
+    `kivy_clock`: one of `default`, `interrupt`, `free_all`, `free_only`
+        The clock type to use with kivy. See :mod:`kivy.clock`.
+    `default_font`: list, defaults to ['Roboto',
+    'data/fonts/Roboto-Regular.ttf', 'data/fonts/Roboto-Italic.ttf',
+    'data/fonts/Roboto-Bold.ttf', 'data/fonts/Roboto-BoldItalic.ttf']
+
+        Default font used for widgets displaying any text.
 
 :postproc:
 
@@ -190,13 +197,10 @@ Available configuration tokens
         :class:`~kivy.uix.behaviors.buttonbehavior.ButtonBehavior` to
         make sure they display their current visual state for the given
         time.
-    `kivy_clock`: one of `default`, `interrupt`, `free_all`, `free_only`
-        The clock type to use with kivy. See :mod:`kivy.clock`.
-    `default_font`: list, defaults to ['Roboto',
-    'data/fonts/Roboto-Regular.ttf', 'data/fonts/Roboto-Italic.ttf',
-    'data/fonts/Roboto-Bold.ttf', 'data/fonts/Roboto-BoldItalic.ttf']
-
-        Default font used for widgets displaying any text.
+    `vsync`: `None` or a bool
+        Whether vsync is enabled, currently only used with sdl2 window.
+        Possible values are `None` -- leaves it unchanged, `1` -- sets
+        vsync, or `0` -- disables vsync.
 
 :input:
 
@@ -272,6 +276,7 @@ Available configuration tokens
     `min_state_time` has been added to the `graphics` section.
     `kivy_clock` has been added to the kivy section
     `default_font` has beed added to the kivy section
+    `vsync` has beed added to the graphics section
 
 .. versionchanged:: 1.9.0
     `borderless` and `window_state` have been added to the graphics section.
