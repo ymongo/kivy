@@ -116,15 +116,15 @@ cdef class _WindowSDL2Storage:
             y = SDL_WINDOWPOS_UNDEFINED
 
         # vsync
-        vsync = Config.getboolean('graphics', 'vsync')
-        if vsync == 1:
-            Logger.debug('WindowSDL: force enabling vsync')
-            if SDL_GL_SetSwapInterval(-1) == -1:
-                Logger.debug('WindowSDL: late swap tearing not supported, using standard vsync')
-                SDL_GL_SetSwapInterval(1)
-        elif vsync == 0:
-            Logger.debug('WindowSDL: force disabling vsync')
-            SDL_GL_SetSwapInterval(0)
+        if Config.get('graphics', 'vsync') != 'None':
+            if Config.getboolean('graphics', 'vsync'):
+                Logger.debug('WindowSDL: force enabling vsync')
+                if SDL_GL_SetSwapInterval(-1) == -1:
+                    Logger.debug('WindowSDL: late swap tearing not supported, using standard vsync')
+                    SDL_GL_SetSwapInterval(1)
+            else:
+                Logger.debug('WindowSDL: force disabling vsync')
+                SDL_GL_SetSwapInterval(0)
 
         # Multisampling:
         # (The number of samples is limited to 4, because greater values
