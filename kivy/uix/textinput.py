@@ -532,6 +532,8 @@ class TextInput(FocusBehavior, Widget):
         fbind('font_family', refresh_line_options)
         fbind('base_direction', refresh_line_options)
         fbind('text_language', refresh_line_options)
+        # pangomongo
+        fbind('color' , refresh_line_options)
 
         def handle_readonly(instance, value):
             if value and (not _is_desktop or not self.allow_copy):
@@ -549,6 +551,9 @@ class TextInput(FocusBehavior, Widget):
         fbind('size', update_text_options)
         fbind('password', update_text_options)
         fbind('password_mask', update_text_options)
+        # pangomongo
+        fbind('color' , update_text_options)
+
 
         fbind('pos', trigger_update_graphics)
         fbind('halign', trigger_update_graphics)
@@ -2200,6 +2205,8 @@ class TextInput(FocusBehavior, Widget):
             self._line_options = kw = {
                 'font_size': self.font_size,
                 'font_name': self.font_name,
+                # pangomongo
+                'color': self.color,
                 'font_context': self.font_context,
                 'font_family': self.font_family,
                 'text_language': self.text_language,
@@ -2915,13 +2922,13 @@ class TextInput(FocusBehavior, Widget):
     and defaults to [1, 1, 1, 1] (white).
     '''
 
-    foreground_color = ListProperty([0, 0, 0, 1])
+    foreground_color = ListProperty([1, 1, 1, 1])
     '''Current color of the foreground, in (r, g, b, a) format.
 
     .. versionadded:: 1.2.0
 
     :attr:`foreground_color` is a :class:`~kivy.properties.ListProperty`
-    and defaults to [0, 0, 0, 1] (black).
+    and defaults to [1, 1, 1, 1] (white).
     '''
 
     disabled_foreground_color = ListProperty([0, 0, 0, .5])
@@ -3101,6 +3108,9 @@ class TextInput(FocusBehavior, Widget):
 
     :attr:`font_size` is a :class:`~kivy.properties.NumericProperty` and
     defaults to 15\ :attr:`~kivy.metrics.sp`.
+    '''
+    color = ListProperty([0, 0, 0, 1])
+    ''' Font color in RGBA - to bypass texture colouring with foreground_color 
     '''
 
     font_context = StringProperty(None, allownone=True)
